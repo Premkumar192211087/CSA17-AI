@@ -25,3 +25,5 @@ def N_queens(n):
 N_queens(N)
 for i in list:
     print (i)
+
+
