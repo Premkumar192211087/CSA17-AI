@@ -38,7 +38,8 @@ Algorithm:
    - If the open list becomes empty without reaching the goal, return `None`.
 
 
- 3. Depth-First Search (DFS)
+
+3. Depth-First Search (DFS)
 
 Algorithm:
 1. Initialize Data Structures:
@@ -51,6 +52,8 @@ Algorithm:
 
 3. Complete Traversal
    - Continue until all reachable nodes have been visited.
+
+
 
 
 
@@ -68,7 +71,9 @@ Algorithm:
 3. Complete Traversal:
    - Continue until all reachable nodes have been processed.
 
- 5. Cryptarithm Solver
+
+
+5. Cryptarithm Solver
 
 Algorithm:
 1. Generate Permutations:
@@ -83,6 +88,8 @@ Algorithm:
 
 4. Return Solution:
    - Return the first valid mapping found or `None` if no valid mapping exists.
+
+
 
 
  6. 8-Queen Problem
