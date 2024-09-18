@@ -196,8 +196,105 @@ Traveling Salesman Problem (TSP)
      1. Define a heuristic function that evaluates the board state.
      2. Use this heuristic in conjunction with search algorithms to guide the decision-making process.
 
-These algorithms each tackle their respective problems in different ways, balancing between optimality and computational feasibility based on the problem's complexity.
 
- 
 
+
+
+Feedforward Neural Network Algorithm
+
+Algorithm: Feedforward Neural Network
+
+1. Initialization:
+   - Set the input size, hidden size, output size, and learning rate.
+   - Initialize weights between input and hidden layers with random values.
+   - Initialize biases for the hidden and output layers as zeros.
+2. Activation Function:
+   - Define the sigmoid activation function:
+     - \( \text{sigmoid}(z) = \frac{1}{1 + e^{-z}} \)
+   - Define the derivative of the sigmoid function.
+3. Forward Propagation:
+   - For each input sample:
+     - Compute hidden layer input: \( \text{hidden\_input} = X \cdot W_{\text{input-hidden}} + b_{\text{hidden}} \)
+     - Compute hidden layer output using the sigmoid function: \( \text{hidden\_output} = \text{sigmoid}(\text{hidden\_input}) \)
+     - Compute final layer input: \( \text{final\_input} = \text{hidden\_output} \cdot W_{\text{hidden-output}} + b_{\text{output}} \)
+     - Compute final output using the sigmoid function: \( \text{final\_output} = \text{sigmoid}(\text{final\_input}) \)
+4. Loss Calculation:
+   - Compute the mean squared error between predicted outputs and true labels:
+     - \( \text{loss} = \frac{1}{N} \sum (y_{\text{true}} - y_{\text{pred}})^2 \)
+5. Backward Propagation:
+   - Calculate the error at the output layer: \( \text{output\_error} = y_{\text{pred}} - y_{\text{true}} \)
+   - Compute the gradient (delta) for the output layer: \( \text{output\_delta} = \text{output\_error} \cdot \text{sigmoid\_derivative}(\text{final\_output}) \)
+   - Compute the error for the hidden layer: \( \text{hidden\_error} = \text{output\_delta} \cdot W_{\text{hidden-output}}^T \)
+   - Compute the gradient for the hidden layer: \( \text{hidden\_delta} = \text{hidden\_error} \cdot \text{sigmoid\_derivative}(\text{hidden\_output}) \)
+6. Weights and Biases Update:
+   - Update the weights and biases using the learning rate:
+     - \( W_{\text{hidden-output}} -= \text{hidden\_output}^T \cdot \text{output\_delta} \cdot \text{learning rate} \)
+     - \( b_{\text{output}} -= \sum \text{output\_delta} \cdot \text{learning rate} \)
+     - \( W_{\text{input-hidden}} -= X^T \cdot \text{hidden\_delta} \cdot \text{learning rate} \)
+     - \( b_{\text{hidden}} -= \sum \text{hidden\_delta} \cdot \text{learning rate} \)
+7. Training:
+   - Repeat the forward propagation, loss calculation, and backward propagation for a specified number of epochs.
+8. Prediction:
+   - Use the forward propagation function to get the output for new input samples.
+
+
+
+
+Minimax Algorithm with Alpha-Beta Pruning
+
+Algorithm: Minimax with Alpha-Beta Pruning
+1. Initialization:
+   - Define constants `MAX` and `MIN` for comparison.
+2. Minimax Function:
+   - Define a recursive function `minimax(depth, nodeIndex, maximizingPlayer, values, alpha, beta)`:
+     - Base Case:
+       - If `depth` equals the maximum depth (e.g., 3), return the value of the node from the `values` array.
+     - Maximizing Player:
+       - Initialize `best` to `MIN`.
+       - For each child node (2 children in binary tree):
+         - Recursively call `minimax` for the child node.
+         - Update `best` with the maximum value.
+         - Update `alpha` with the maximum of `alpha` and `best`.
+         - If `beta` is less than or equal to `alpha`, break (prune the search).
+     - Minimizing Player:
+       - Initialize `best` to `MAX`.
+       - For each child node:
+         - Recursively call `minimax` for the child node.
+         - Update `best` with the minimum value.
+         - Update `beta` with the minimum of `beta` and `best`.
+         - If `beta` is less than or equal to `alpha`, break (prune the search).
+3. Main Function:
+   - Get user input for the number of leaf nodes and their values.
+   - Call the `minimax` function starting from the root node (index 0) and the initial values for `alpha` and `beta`.
+4. Output:
+   - Print the optimal value obtained from the minimax function.
+
+
+
+ Decision Tree Algorithm (ID3)
+1. Initialization:
+   - Start with the entire dataset as the root node of the tree.
+   - Define the maximum depth of the tree (if applicable).
+2. Stopping Criteria:
+   - If all examples in the dataset belong to the same class, create a leaf node and label it with that class.
+   - If there are no more features to split on, create a leaf node and label it with the majority class of the dataset.
+   - If the maximum depth is reached, create a leaf node and label it with the majority class.
+3. Feature Selection:
+   - For each feature in the dataset:
+     - Calculate the Information Gain or Gini Index for all possible splits of the dataset based on that feature.
+     - Select the feature that provides the highest Information Gain (or lowest Gini Index).
+4. Splitting:
+   - Split the dataset into subsets based on the selected feature and its threshold value (for continuous features).
+   - For each subset, repeat the process recursively:
+     - Create a child node for each subset.
+     - Call the decision tree algorithm on the subset.
+5. Recursion:
+   - Continue the process for each child node until reaching the stopping criteria.
+6. Leaf Node Creation:
+   - Once the stopping criteria are met, label the node with the class determined by the majority class in the subset.
+7. Tree Traversal for Prediction:
+   - To predict the class for a new instance, start at the root node:
+     - Traverse the tree based on the feature values of the instance.
+     - Follow the branches corresponding to the feature values until reaching a leaf node.
+     - Return the class label at the leaf node as the predicted class for the instance.
 
