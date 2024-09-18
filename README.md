@@ -297,4 +297,51 @@ Algorithm: Minimax with Alpha-Beta Pruning
      - Traverse the tree based on the feature values of the instance.
      - Follow the branches corresponding to the feature values until reaching a leaf node.
      - Return the class label at the leaf node as the predicted class for the instance.
+    
+   Sure! Below are programming algorithms for the 8-puzzle, Cannibal Problem, and Vacuum Cleaner problem. Each algorithm is described in a step-by-step manner, focusing on clarity.
+
+
+
+
+8-Puzzle (Using A* Search)
+Algorithm
+1. Define the State: Represent the puzzle as a 3x3 array.
+2. Heuristic Function: Implement a heuristic function (e.g., Manhattan distance).
+3. Priority Queue: Use a priority queue to store and retrieve states based on their cost (g + h).
+4. Explore States:
+   - Initialize the priority queue with the initial state.
+   - While the queue is not empty:
+     - Dequeue the state with the lowest cost.
+     - If it’s the goal state, return the solution.
+     - Generate possible moves (up, down, left, right).
+     - For each move, calculate the new state and its cost.
+     - If the new state hasn’t been visited, add it to the queue.
+
+
+ 
+ 
+ Cannibal Problem (Using Backtracking)
+Algorithm
+1. State Representation: Define a state as a tuple (left_cannibals, left_missionaries, boat_position).
+2. Base Case: Check if all missionaries and cannibals are on the right side.
+3. Generate Moves: Generate all possible valid moves (1 or 2 people) from the left to the right.
+4. Check Validity: Ensure that cannibals do not outnumber missionaries on either side after the move.
+5. Recursive Backtracking:
+   - For each valid move, recursively call the function with the new state.
+   - If a solution is found, return it.
+
+
+
+ 
+ 
+ Vacuum Cleaner Problem (Reflex Agent)
+
+ Algorithm
+1. Define the Environment: Represent the grid as a 2D array, with each cell indicating if it's dirty or clean.
+2. Agent Action:
+   - If the current cell is dirty, clean it.
+   - Otherwise, move to an adjacent cell (choose based on some strategy).
+3. Loop: Continue until all cells are clean.
+
+
 
